@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { ContactFilter } from '../cmps/ContactFilter/ContactFilter'
 import { ContactList } from '../cmps/ContactList'
 import { contactService }  from '../services/contactService'
+import {eventBusService} from '../services/eventBusService'
 import { Link } from 'react-router-dom'
 
 export class ContactApp extends Component {
@@ -13,6 +14,10 @@ export class ContactApp extends Component {
 
   componentDidMount() {
     this.loadContacts()
+    eventBusService.on('onDeleteContact',(data)=>{
+      this.onDeleteContact(data)
+      this.props.history.push('/app')
+    })
   }
 
   async loadContacts() {
@@ -32,7 +37,7 @@ export class ContactApp extends Component {
     const { contacts } = this.state
     return (
       <div className="contact-app">
-        <h1>Contact Shop</h1>
+        <h2>Search your Contacts..</h2>
         <ContactFilter onChangeFilter={this.onChangeFilter} />
         <ContactList contacts={contacts} />
         <Link to="/contact/edit">Add Contact</Link>

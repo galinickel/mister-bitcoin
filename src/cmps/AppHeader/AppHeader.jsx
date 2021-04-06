@@ -9,9 +9,9 @@ const _AppHeader= (props)=>  {
         return (
             <header className="app-header">
             <ul>
+                <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li>
             <li><NavLink to="/app" activeClassName="active-nav">Contacts</NavLink></li>
                 <li><NavLink to="/statistics" activeClassName="active-nav">Statistics</NavLink></li>
-                <li><NavLink exact to="/" activeClassName="active-nav">Home</NavLink></li>
             </ul>
             </header>
         )

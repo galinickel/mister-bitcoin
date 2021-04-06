@@ -1,1 +1,13 @@
-.statisticsPage {}
+.statisticsPage {
+    margin: 50px 13%;
+    display: flex;
+    div{
+        margin: 1%;
+    }
+    svg{
+        height: 200px;
+        width: 400px;
+        border: 2px solid lightgray;
+        border-radius: 15px;
+    }
+}

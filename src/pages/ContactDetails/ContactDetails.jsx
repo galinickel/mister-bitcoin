@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { contactService } from '../../services/contactService'
+import {eventBusService} from '../../services/eventBusService'
 import { Link } from 'react-router-dom'
 import './ContactDetails.scss'
 
@@ -10,6 +11,9 @@ export class ContactDetails extends Component {
 
     componentDidMount() {
         this.loadContact()
+    }
+    onDeleteContact = ()=> {
+        eventBusService.emit('onDeleteContact',this.state.contact._id)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -34,7 +38,7 @@ export class ContactDetails extends Component {
                 <p>Phone: {contact.phone}</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam labore deleniti quis facere, a rerum, voluptatem vitae iusto possimus voluptatum libero nulla, facilis hic at eligendi molestias. Quasi, corporis repellendus.</p>
 
-                <button onClick={() => this.props.onDeleteContact(contact._id)}>Delete</button>
+                <button onClick={() => this.onDeleteContact(contact._id)}>Delete</button>
                 <Link to={'/contact/edit/' + contact._id}>Edit</Link>
             </div>
         )

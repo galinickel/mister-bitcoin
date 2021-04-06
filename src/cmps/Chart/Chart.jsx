@@ -23,8 +23,9 @@ export class Chart extends Component {
         return (
             <div>
                 {this.state.chartData &&<Sparklines data={this.state.chartData}>
-                    <SparklinesLine color="blue" />
+                    <SparklinesLine color="gray" />
                 </Sparklines>}
+                <h3>{this.props.msg}</h3>
             </div>
         )
     }

@@ -9,11 +9,10 @@ export class StatisticsPage extends Component {
 
     render() {
         return (
-            <div>
-                <Chart type="marketPrice" />
-                <Chart type="tradeVolume" />
-                <Chart type="blockSize" />
-
+            <div className="statisticsPage">
+                <Chart class="chart" type="marketPrice"  msg="Bitcoin's Market Price Over The Years"/>
+                <Chart class="chart" type="tradeVolume" msg="Bitcoin Trade Volume" />
+                <Chart class="chart" type="blockSize"  msg="Bitcoin Block-Size"/>
             </div>
         )
     }
