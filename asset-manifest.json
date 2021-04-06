@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/mister-bitcoin/static/css/main.8764eef5.chunk.css",
-    "main.js": "/mister-bitcoin/static/js/main.53bb3417.chunk.js",
-    "main.js.map": "/mister-bitcoin/static/js/main.53bb3417.chunk.js.map",
-    "runtime-main.js": "/mister-bitcoin/static/js/runtime-main.3fa18e5b.js",
-    "runtime-main.js.map": "/mister-bitcoin/static/js/runtime-main.3fa18e5b.js.map",
-    "static/js/2.bb89da0c.chunk.js": "/mister-bitcoin/static/js/2.bb89da0c.chunk.js",
-    "static/js/2.bb89da0c.chunk.js.map": "/mister-bitcoin/static/js/2.bb89da0c.chunk.js.map",
-    "static/js/3.9d105aaf.chunk.js": "/mister-bitcoin/static/js/3.9d105aaf.chunk.js",
-    "static/js/3.9d105aaf.chunk.js.map": "/mister-bitcoin/static/js/3.9d105aaf.chunk.js.map",
+    "main.css": "/mister-bitcoin/static/css/main.e6f1a940.chunk.css",
+    "main.js": "/mister-bitcoin/static/js/main.cce7a947.chunk.js",
+    "main.js.map": "/mister-bitcoin/static/js/main.cce7a947.chunk.js.map",
+    "runtime-main.js": "/mister-bitcoin/static/js/runtime-main.162d69fd.js",
+    "runtime-main.js.map": "/mister-bitcoin/static/js/runtime-main.162d69fd.js.map",
+    "static/js/2.b800abef.chunk.js": "/mister-bitcoin/static/js/2.b800abef.chunk.js",
+    "static/js/2.b800abef.chunk.js.map": "/mister-bitcoin/static/js/2.b800abef.chunk.js.map",
+    "static/js/3.68543f59.chunk.js": "/mister-bitcoin/static/js/3.68543f59.chunk.js",
+    "static/js/3.68543f59.chunk.js.map": "/mister-bitcoin/static/js/3.68543f59.chunk.js.map",
     "index.html": "/mister-bitcoin/index.html",
-    "static/css/main.8764eef5.chunk.css.map": "/mister-bitcoin/static/css/main.8764eef5.chunk.css.map",
-    "static/js/2.bb89da0c.chunk.js.LICENSE.txt": "/mister-bitcoin/static/js/2.bb89da0c.chunk.js.LICENSE.txt"
+    "static/css/main.e6f1a940.chunk.css.map": "/mister-bitcoin/static/css/main.e6f1a940.chunk.css.map",
+    "static/js/2.b800abef.chunk.js.LICENSE.txt": "/mister-bitcoin/static/js/2.b800abef.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/mister-bitcoin/static/media/Roboto-Light.8be2d148.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.3fa18e5b.js",
-    "static/js/2.bb89da0c.chunk.js",
-    "static/css/main.8764eef5.chunk.css",
-    "static/js/main.53bb3417.chunk.js"
+    "static/js/runtime-main.162d69fd.js",
+    "static/js/2.b800abef.chunk.js",
+    "static/css/main.e6f1a940.chunk.css",
+    "static/js/main.cce7a947.chunk.js"
   ]
 }
