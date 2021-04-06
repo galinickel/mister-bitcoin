@@ -1,11 +1,11 @@
 import { ContactPreview } from '../ContactPreview';
 import './ContactList.scss'
-export function ContactList({ contacts, onSelectContact }) {
+export function ContactList({ contacts }) {
 
   return (
     <div className="contact-list">
       {
-        contacts && contacts.map(contact => <ContactPreview onSelectContact={onSelectContact} key={contact._id} contact={contact} />)
+        contacts && contacts.map(contact => <ContactPreview key={contact._id} contact={contact} />)
       }
     </div>
   )

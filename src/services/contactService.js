@@ -209,8 +209,9 @@ function save(contactToSave) {
 
 function getEmptyContact() {
     return {
-        model: '',
-        type: ''
+        email: '',
+        name: '',
+        phone: ''
     }
 }
 
