@@ -1,0 +1,11 @@
+.transfer-funds {
+    .contact-edit{
+        display: flex;
+        flex-direction: column;
+    }
+    input{
+        min-width: 125px;
+        width: 50%;
+        margin: 0 auto;
+    }
+}

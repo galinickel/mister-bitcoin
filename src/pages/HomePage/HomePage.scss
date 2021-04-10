@@ -1,1 +1,86 @@
-.homePage {}
+.home-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .hero-container {
+        margin: 0 auto;
+        min-height: 70vh;
+        padding-bottom: 5%;
+        width: 80%;
+
+        .home-hero {
+            max-height: 500px;
+            max-width: 500px;
+        }
+    }
+
+    h2 {
+        margin-top: 25px;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .homepage-section {
+        padding: 2% 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: white;
+        width: 100%;
+        min-height: 30vh;
+
+        p {
+            padding: 0 3%;
+        }
+    }
+
+    .contacts {
+        background-color: rgb(69, 90, 99);
+    }
+
+    .wallet {
+        color: rgb(69, 90, 99);
+        background-color: whitesmoke;
+    }
+}
+
+.home-move {
+    border: 1px solid rgb(69, 90, 99);
+    margin: 5% auto;
+    border-radius: 10px;
+    padding: 10%;
+    align-items: end;
+}
+
+.moves-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .moves-container {
+        display: flex;
+        flex-direction: column;
+        width: unset;
+
+    }
+
+    .home-move {
+        width: 30%;
+        padding: 2%;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .home-move {
+        width: 100%;
+        margin: 5% 0;
+    }
+}

@@ -1,46 +1,76 @@
 import { Component } from 'react';
-import { contactService } from '../../services/contactService'
-import {eventBusService} from '../../services/eventBusService'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { MoveList } from '../../cmps/MoveList/MoveList';
+import { TransferFunds } from '../../cmps/TransferFunds/TransferFunds';
+import { getContactById, removeContact, tryContact, chargeContact } from '../../store/actions/contactActions';
+
 import './ContactDetails.scss'
 
-export class ContactDetails extends Component {
+class _ContactDetails extends Component {
+
     state = {
         contact: null
     }
 
-    componentDidMount() {
-        this.loadContact()
-    }
-    onDeleteContact = ()=> {
-        eventBusService.emit('onDeleteContact',this.state.contact._id)
+    async componentDidMount() {
+        await this.props.getContactById(this.props.match.params.id)
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
-            this.loadContact()
+            this.props.getContactById(this.props.match.params.id)
         }
     }
 
-    async loadContact() {
-        const contact = await contactService.getById(this.props.match.params.id)
-        this.setState({ contact })
+    onRemoveContact = async () => {
+        await this.props.removeContact(this.props.contact._id)
+        this.onBack()
+    }
+
+    onBack = () => {
+        this.props.history.goBack()
     }
 
     render() {
-        const { contact } = this.state
+        const { contact, user } = this.props
         if (!contact) return <div>Loading Contact.....</div>
         return (
-            <div>
-                <img src={contact.picture} alt="" />
-                <p>{contact.name}</p>
-                <small>{contact.email}</small>
-                <p>Phone: {contact.phone}</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam labore deleniti quis facere, a rerum, voluptatem vitae iusto possimus voluptatum libero nulla, facilis hic at eligendi molestias. Quasi, corporis repellendus.</p>
+            <div className="details">
+                <button className="back-btn" onClick={this.onBack}>Back</button>
+                <section className="contact-details">
+                    <section className="contact-container">
+                        <img src={contact.picture} alt="" />
 
-                <button onClick={() => this.onDeleteContact(contact._id)}>Delete</button>
-                <Link to={'/contact/edit/' + contact._id}>Edit</Link>
+                    <section className="contact-info">
+                    <p>{contact.name}</p>
+                    <p>{contact.email}</p>
+                    <p>Phone: {contact.phone}</p>
+                    </section></section>
+                    <section className="buttons-container">
+                    <button onClick={this.onRemoveContact}>Delete</button>
+                    <button><Link to={'/contact/edit/' + contact._id}>Edit</Link></button>
+                    </section>
+                    <section className="actions-container">
+                    <TransferFunds user={user} contact={contact} />
+                    <MoveList user={user} contact={contact} />
+                    </section>
+                </section>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    contact: state.contactReducer.currContact,
+    user: state.userReducer.user
+})
+
+const mapDispatchToProps = {
+    getContactById,
+    removeContact,
+    tryContact,
+    chargeContact
+}
+
+export const ContactDetails = connect(mapStateToProps, mapDispatchToProps)(_ContactDetails)

@@ -1,11 +1,13 @@
 import { Component } from 'react'
 import { ContactFilter } from '../cmps/ContactFilter/ContactFilter'
 import { ContactList } from '../cmps/ContactList'
-import { contactService }  from '../services/contactService'
-import {eventBusService} from '../services/eventBusService'
+import { eventBusService } from '../services/eventBusService'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loadContacts, removeContact } from '../store/actions/contactActions'
+import { loadUser } from '../store/actions/userActions'
 
-export class ContactApp extends Component {
+class _ContactApp extends Component {
 
   state = {
     contacts: null,
@@ -13,35 +15,40 @@ export class ContactApp extends Component {
   }
 
   componentDidMount() {
-    this.loadContacts()
-    eventBusService.on('onDeleteContact',(data)=>{
+    this.props.loadContacts(this.state.filterBy)
+    eventBusService.on('onDeleteContact', (data) => {
       this.onDeleteContact(data)
       this.props.history.push('/app')
     })
   }
-
-  async loadContacts() {
-    const contacts = await contactService.query(this.state.filterBy)
-    this.setState({ contacts })
+  onChangeFilter = async (filterBy) => {
+    this.setState({ filterBy }, await this.props.loadContacts(filterBy))
   }
 
-  onChangeFilter = (filterBy) => {
-    this.setState({ filterBy }, this.loadContacts)
-  }
 
-  onDeleteContact = async (contactId) => {
-    await contactService.remove(contactId)
-    this.loadContacts()
-  }
   render() {
-    const { contacts } = this.state
+    const { contacts } = this.props
     return (
       <div className="contact-app">
-        <h2>Search your Contacts..</h2>
-        <ContactFilter onChangeFilter={this.onChangeFilter} />
+        <section className="edit-bar">       
+          <button><Link to="/contact/edit">Add Contact</Link></button>
+         <ContactFilter onChangeFilter={this.onChangeFilter} />
+          </section>
         <ContactList contacts={contacts} />
-        <Link to="/contact/edit">Add Contact</Link>
       </div>
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    contacts: state.contactReducer.contacts
+  }
+}
+
+const mapDispatchToProps = {
+  loadContacts,
+  removeContact,
+  loadUser
+}
+
+export const ContactApp = connect(mapStateToProps, mapDispatchToProps)(_ContactApp)
